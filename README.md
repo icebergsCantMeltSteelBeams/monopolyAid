@@ -5,7 +5,6 @@ make a single transaction. Monopoly Aid hopes to fix those problems.
 
 Current Version: 1.9
 
-Features:
 
 Planned Features:
 
@@ -28,7 +27,7 @@ Planned Features:
 	
 	- Save your progress
 
-Existing:
+Existing Builds:
 
 	V1.4:
 	
