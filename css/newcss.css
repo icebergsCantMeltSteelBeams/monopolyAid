@@ -1,0 +1,33 @@
+body {
+	background-color: #C2C2A3;
+	
+}
+
+.noti {
+	height: 500px;
+	width: 300px;
+	border: 3px solid black;
+	overflow: auto;
+}
+
+.new-noti {
+	display: block;
+	border: 1px dashed orange;
+}
+
+
+.noti-button {
+	height: 20px;
+	width 10px;
+	border: 1px solid blue;
+}
+
+.noti-begin {
+	display: block;
+	border: 2px solid black;
+}
+
+.begin-game {
+	background-color: orange;
+	display: inline-block;
+}
