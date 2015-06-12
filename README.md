@@ -41,6 +41,3 @@ Existing:
 	- Supports 3 players
 	
 	- Save your progress
-
-
-Text-Only version already complete. It only supports 3 players and
