@@ -2,8 +2,10 @@
 If you've played monopoly before, you know the pain of having to count out and 
 give others money. Even with the shitty debit card edition it takes a minute to 
 make a single transaction. Monopoly Aid hopes to fix those problems.
+(Note: I'm a shitty but getting better programmer and I wrote half of this barely awake and did my best to comment areas so others can see what I did and improve it
+Flowchart of shitty js: http://puu.sh/ip6mu/f5542fcf4c.png)
 
-Current Version: 1.9
+Current Version: 2.0
 
 
 Planned Features:
@@ -19,13 +21,12 @@ Planned Features:
 	V2.0:
 	
 	- No more reading from the console! Features a notification log! That means that it will be able to be run
-	on google chrome instead of just firefox.
+	on google chrome instead of just firefox. (Reason being that in firefox you can open the console while there is prompts asking for info unlike chrome, although I also fixed this by
+	using bootstrap)
 	
-	- Can roll dice for you
+	- Supports 3 Players
 	
-	- Supports 3-4 Players
-	
-	- Save your progress
+	- Text Area Input Fields!
 
 Existing Builds:
 
