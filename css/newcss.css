@@ -26,6 +26,7 @@
 /* Third Row Beginning */
 	.thirdrow {
 		background-color: #FFFFFF;
+		height: 100px;
 		border: 10px solid red;
 		border-radius: 10px;
 	}

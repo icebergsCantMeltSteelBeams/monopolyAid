@@ -306,8 +306,9 @@ var playerOneTurn = function () {
 					label: "I Didn't!",
 					className: "btn-success",
 					callback: function() {
-						bootbox.alert("Good for you!");
-						playerTwoTurn();  
+						bootbox.alert("Good for you!",function () {
+							playerTwoTurn();  
+						});
 					}
 				},
 			}
@@ -342,8 +343,6 @@ var playerOneTurn = function () {
 		}
 	})
 };
-
-
 
 var playerTwoTurn = function () {
 	// Asks if they spent any money
@@ -438,7 +437,7 @@ var playerTwoTurn = function () {
 							  	players.player2.wallet.send.player1(result);        
 							  	notiLog.newWalletUpdate(players.player2.name + " now Has $" + numbersWithCommas(players.player2.wallet.balance) + "K");
 							  	notiLog.newWalletUpdate(players.player1.name + " now Has $" + numbersWithCommas(players.player1.wallet.balance) + "K");   
-							  	//playerThreeTurn();      
+							  	playerThreeTurn();      
 							  }
 						});
 					}
@@ -456,7 +455,7 @@ var playerTwoTurn = function () {
 							  	players.player2.wallet.send.player3(result);        
 							  	notiLog.newWalletUpdate(players.player2.name + " now Has $" + numbersWithCommas(players.player2.wallet.balance) + "K");
 							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
-							  	//playerThreeTurn();  
+							  	playerThreeTurn();  
 							  }
 						});
 					}
@@ -473,7 +472,7 @@ var playerTwoTurn = function () {
 							  } else {
 							  	players.player2.wallet.send.house(result);        
 							  	notiLog.newWalletUpdate(players.player2.name + " now Has $" + numbersWithCommas(players.player2.wallet.balance) + "K");
-							  	//playerThreeTurn();  
+							  	playerThreeTurn();  
 							  }
 						});
 					}
@@ -483,8 +482,9 @@ var playerTwoTurn = function () {
 					label: "I Didn't!",
 					className: "btn-success",
 					callback: function() {
-						bootbox.alert("Good for you!");
-						//playerThreeTurn();  
+						bootbox.alert("Good for you!",function () {
+							playerThreeTurn();  
+						});
 					}
 				},
 			}
@@ -520,14 +520,186 @@ var playerTwoTurn = function () {
 	})
 };
 
+var playerThreeTurn = function () {
+	// Asks if they spent any money
+	var playerThreeTurnSpentMoney = function () {
+		bootbox.dialog({
+			message: "If so who?",
+			title: "Did you spend any money?",
+			buttons: {
+				// Payed player1
+				pay1: {
+					label: "I paid " + players.player1.name,
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to player2
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.player1(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	notiLog.newWalletUpdate(players.player1.name + " now Has $" + numbersWithCommas(players.player1.wallet.balance) + "K"); 
+							  	playerThreeTurnSpentMoney2();        
+							  }
+						});
+					}
+				},
+				// Payed player2
+				pay2: {
+					label: "I paid " + players.player2.name,
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to player2
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.player2(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	notiLog.newWalletUpdate(players.player2.name + " now Has $" + numbersWithCommas(players.player2.wallet.balance) + "K");
+							  	playerThreeTurnSpentMoney2();
+							  }
+						});
+					}
+				},
+				// Payed the house
+				house: {
+					label: "I paid the house (aka no-one)",
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to the house
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.house(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	playerThreeTurnSpentMoney2();
+							  }
+						});
+					}
+				},
+				// Did not pay
+				danger: {
+					label: "I Didn't!",
+					className: "btn-success",
+					callback: function() {
+						bootbox.alert("Good for you!", function () {
+							playerThreeTurnSpentMoney2();
+						})
+						
+					}
+				},
+			}
+		})
+	}	
+	// Asks if they spent any money
+	var playerThreeTurnSpentMoney2 = function () {
+		bootbox.dialog({
+			message: "If so who?",
+			title: "Did you spend any money?",
+			buttons: {
+				// Payed player1
+				pay1: {
+					label: "I paid " + players.player1.name,
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to player1
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.player1(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	notiLog.newWalletUpdate(players.player1.name + " now Has $" + numbersWithCommas(players.player1.wallet.balance) + "K");   
+							  	playerOneTurn();      
+							  }
+						});
+					}
+				},
+				// Payed player2
+				pay2: {
+					label: "I paid " + players.player2.name,
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to player3
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.player2(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	notiLog.newWalletUpdate(players.player2.name + " now Has $" + numbersWithCommas(players.player2.wallet.balance) + "K");
+							  	playerOneTurn();  
+							  }
+						});
+					}
+				},
+				// Payed the house
+				house: {
+					label: "I paid the house (aka no-one)",
+					className: "btn-danger",
+					callback: function() {
+						// Asks how much money was paid to the house
+						bootbox.prompt("How much money did you pay?", function(result) {                
+							  if (result === null) {                                             
+							    Example.show("Prompt dismissed");                              
+							  } else {
+							  	players.player3.wallet.send.house(result);        
+							  	notiLog.newWalletUpdate(players.player3.name + " now Has $" + numbersWithCommas(players.player3.wallet.balance) + "K");
+							  	playerOneTurn();  
+							  }
+						});
+					}
+				},
+				// Did not pay anyone
+				danger: {
+					label: "I Didn't!",
+					className: "btn-success",
+					callback: function() {
+						bootbox.alert("Good for you!",function () {
+							playerOneTurn();
+						});  
+					}
+				},
+			}
+		})
+	}
+	// Tells them it's their turn
+	notiLog.newGenUpdate("It is now " + players.player3.name + "'s Turn.")
+	// Tells them to roll and asks if they passed go, then adds $2,000K if they did and does nothing if they did not
+	bootbox.dialog({
+		message: "Did you pass Go?",
+		title: "Please Roll & Move",
+		buttons: {
+			// Passed go
+			success: {
+				label: "Yes I Passed GO!",
+				className: "btn-success",
+				callback: function() {
+					// Adds $2,000K to balance
+					players.player3.wallet.balance = +players.player3.wallet.balance + +2000;
+					notiLog.newWalletUpdate(players.player3.name + " now has $" + numbersWithCommas(players.player3.wallet.balance) + "K")
+					playerThreeTurnSpentMoney();
+				}
+			},
+			// Did not pass go
+			danger: {
+				label: "I did not :(",
+				className: "btn-danger",
+				callback: function() {
+					playerThreeTurnSpentMoney();
+				}
+			},
+		}
+	})
+};
+
+
 var normalTurn = function () {
 		// Player 1's Turn
 		playerOneTurn();
-		// Player 2's Turn
-		//playerTwoTurn();
-		// Player 3's Turn
-		//playerThreeTurn();
-		//normalTurn();
 };
 
 // Begins the game
