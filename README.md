@@ -40,3 +40,16 @@ Existing Builds:
 	- Supports 3 players
 	
 	- Save your progress
+	
+
+
+
+<!-- Player 1 -->
+			<div class="wd-pwd col-md-12">
+				<span class="wd-pwd-info">
+					<script type="text/javascript">document.write("<p class="wd-pwd-info-text">" + players.player1.name + " has $" + numbersWithCommas(players.player1.wallet.balance) + "K "+ "</p>"); </script>
+				</span>
+			</div>
+			
+
+$('.wd').after('<div class="wd-pwd col-md-12"><span class="wd-pwd-info"><script type="text/javascript">document.write("<p>" + players.player1.name + " has $" + numbersWithCommas(players.player1.wallet.balance) + "K "+ "</p>"); </script></span></div>');

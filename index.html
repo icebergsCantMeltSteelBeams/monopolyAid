@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 	<script src="js/newmon.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/newcss.css" />
 	
@@ -22,62 +23,69 @@
 		<div class="begin-game">
 			Begin Game!
 		</div>
+		<!-- Button to test name fields -->
+		<div class="name-test">
+			Test Names!
+		</div>
 	</div>
 	<!-- Input Field Rows -->
 	<div class="col-md-12 thirdrow">
 		<!-- Input Fields -->
 			<!-- Player 1 Name Input Field -->
-			<div class="input-field-div" id="input-player1-name">
-		          <textarea rows="1" placeholder="Player 1 Name"></textarea>
+			<div class="input-field-div">
+		          <textarea id="input-player1-name" rows="1" placeholder="Player 1 Name"></textarea>
 		   </div>
-		    
-		    <!-- Player 2 Name Input Field -->
-			<div class="input-field-div" id="input-player2-name">
-		          <textarea rows="1" placeholder="Player 2 Name"></textarea>
-		    </div>
-		    
-		    <!-- Player 3 Name Input Field -->
-			<div class="input-field-div" id="input-player3-name">
-		          <textarea rows="1" placeholder="Player 3 Name"></textarea>
-		    </div>
-	        
+		   <!-- Player 2 Name Input Field -->
+			<div class="input-field-div">
+		          <textarea id="input-player2-name" rows="1" placeholder="Player 2 Name"></textarea>
+		   </div>
+		   <!-- Player 3 Name Input Field -->
+			<div class="input-field-div">
+		          <textarea id="input-player3-name" rows="1" placeholder="Player 3 Name"></textarea>
+		   </div>
+		   <!-- Starting Amount Input Field -->
+			<div class="input-field-div">
+		          <textarea id="input-startingAmount" rows="1" placeholder="Starting Amount (In thousands)"></textarea>
+		   </div>
+		   
    </div>
    
    <!-- Fourth Row -->
    <div class="col-md-12 fourthrow">
-   		<!-- Notification Log -->
-		<div class="noti col-md-6">
+   		<!-- General Notification Log -->
+		<div class="noti-gen col-md-4">
 			<!-- Test Button -->
-			<div class="noti-button">
-				Test Button Please Ignore
+			<div class="noti-gen-button">
+				General Notifications
 			</div>
 			<!-- Game Logs Here instead of Console -->
 			
 			<!-- Notification That the game gas begun -->
-			<p class="noti-begin">The game has begun</p>
+			<p class="noti-gen-begin">The game has begun</p>
 		</div>
-   		<!-- Wallet Display -->
-   		<div class="wd col-md-6">
-   			<!-- Player 1 -->
-			<div class="wd-pwd col-md-12">
-				<span class="wd-pwd-info">
-					<script type="text/javascript">document.write("<p class='wd-pwd-info-text'>" + players.player1.name + " has $" + numbersWithCommas(players.player1.wallet.balance) + "K "+ "</p>"); </script>
-				</span>
+   		<!-- Wallet Notification Display -->
+   		<div class="noti-wallet col-md-4">
+   			<!-- Test Button -->
+			<div class="noti-wallet-button">
+				Wallet Notifications
 			</div>
-			<!-- Player 2 -->
-			<div class="wd-pwd col-md-12">
-				<span class="wd-pwd-info">
-					<script type="text/javascript">document.write("<p class='wd-pwd-info-text'>" + players.player2.name + " has $" + numbersWithCommas(players.player2.wallet.balance) + "K "+ "</p>"); </script>
-				</span>
+			<!-- Game Logs Here instead of Console -->
+			
+			<!-- Notification That the game gas begun -->
+			<p class="noti-wallet-begin">The game has begun</p>
+   		</div>
+   		<!-- Player Balances Display -->
+   		<div class="player-balances col-md-4">
+   			<!-- Test Button -->
+   			<div class="player-balances-button">
+				Player Balances
 			</div>
-			<!-- Player 3 -->
-			<div class="wd-pwd col-md-12">
-				<span class="wd-pwd-info">
-					<script type="text/javascript">document.write("<p class='wd-pwd-info-text'>" + players.player3.name + " has $" + numbersWithCommas(players.player3.wallet.balance) + "K "+ "</p>"); </script>
-				</span>
+			<!-- Player 1 Balance -->
+			<div>
+				<p class="pbs"><span class='pbs-1-name'>Player 1</span>has $<span class='pbs-1-balance'>Money</span></p>
 			</div>
    		</div>
-   </div>
+	</div>
 
 </body>
 </html>
