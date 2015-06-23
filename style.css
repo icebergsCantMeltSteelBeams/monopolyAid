@@ -1,0 +1,30 @@
+/*
+#339933
+#47A347
+#5CAD5C
+#70B870
+#85C285
+#99CC99
+#ADD6AD
+#C2E0C2
+#D6EBD6
+#EBF5EB
+#FFFFFF
+*/
+
+.playerInputDiv {
+	background-color: #339933;
+	height: 100px;
+	border-radius: 20px;
+}
+
+.input-field-div {
+	display: inline;
+}
+
+.playerInfo {
+	background-color: #339933;
+	height: 100px;
+	border: 2px solid black;
+	border-radius: 2px;
+}
